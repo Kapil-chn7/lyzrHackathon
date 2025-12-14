@@ -1,0 +1,119 @@
+{
+    "workFlow_id": "uid_123",
+    "nodes": [
+        {
+            "id": "agent1",
+            "type": "inputAgent",
+            "config": {
+                "endpoint": "http://localhost:4000/agent1"
+            }
+        },
+        {
+            "id": "agent2",
+            "type": "agent",
+            "config": {
+                "endpoint": "http://localhost:4000/agent2"
+            }
+        },
+        {
+            "id": "human1",
+            "type": "human",
+            "config": {
+                "ui": "approvalForm"
+            }
+        },
+        {
+            "id": "agent3",
+            "type": "agent",
+            "config": {
+                "endpoint": "http://localhost:4000/agent3"
+            }
+        },
+        {
+            "id": "agent4",
+            "type": "agent",
+            "config": {
+                "endpoint": "http://localhost:4000/agent4"
+            }
+        },
+        {
+            "id": "checkAgent1",
+            "type": "checkAgent",
+            "config": {
+                "endpoint": "http://localhost:4000/checkAgent"
+            }
+        },
+        {
+            "id": "agent5",
+            "type": "agent",
+            "config": {
+                "endpoint": "http://localhost:4000/agent5"
+            }
+        },
+        {
+            "id": "outputAgent",
+            "type": "outputAgent",
+            "config": {
+                "endpoint": "http://localhost:4000/outputAgent"
+            }
+        }
+    ],
+    "edges": [
+        {
+            "source": "agent1",
+            "type": "inputAgent",
+            "target": [
+                "agent2"
+            ]
+        },
+        {
+            "source": "agent2",
+            "type": "agent",
+            "target": [
+                "human1"
+            ]
+        },
+        {
+            "source": "human1",
+            "type": "human",
+            "target": [
+                "agent3",
+                "agent2"
+            ]
+        },
+        {
+            "source": "agent3",
+            "type": "agent",
+            "target": [
+                "agent4"
+            ]
+        },
+        {
+            "source": "agent4",
+            "type": "agent",
+            "target": [
+                "checkAgent1"
+            ]
+        },
+        {
+            "source": "checkAgent1",
+            "type": "checkAgent",
+            "target": [
+                "agent3",
+                "agent5"
+            ]
+        },
+        {
+            "source": "agent5",
+            "type": "agent",
+            "target": [
+                "outputAgent"
+            ]
+        },
+        {
+            "source": "outputAgent",
+            "type": "outputAgent",
+            "target": []
+        }
+    ]
+}
